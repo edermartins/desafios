@@ -41,9 +41,9 @@ O exemplo de output está [neste arquivo](https://github.com/idwall/desafios/blo
 ### Como utilizar
 
 Importe a classe Formatter:
-	```python
-	from formatter.simple_format import Formatter
-	```
+```python
+from formatter.simple_format import Formatter
+```
 	
 Ela tem dois parâmetros:
 1. lenght: comprimento da linha (se omitida adotará 40 por padrão)
