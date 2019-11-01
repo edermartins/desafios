@@ -74,7 +74,8 @@ Para executar o bot, basta executar este comando:
 ```
 python telegram_bot.py
 ```
-
+### No Telegram
+![Telegram](https://raw.githubusercontent.com/edermartins/desafios/master/reddit_telegram.JPG)
 
 ### Considerações
 Eu nunca havia usado o telegram e decidi utilizar o `pyTelegramBotAPI` indicado na página do próprio Telegram: [core.telegram.org](https://core.telegram.org/bots/samples) na parte de `Python`.
