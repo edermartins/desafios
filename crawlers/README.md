@@ -29,3 +29,59 @@ Construir um robô que nos envie essa lista via Telegram sempre que receber o co
 ### Dicas
  - Use https://old.reddit.com/
  - Qualquer método para coletar os dados é válido. Caso não saiba por onde começar, procure por JSoup (Java), SeleniumHQ (Java), PhantomJS (Javascript) e Beautiful Soup (Python).
+
+### Pacotes adicionais
+Depende de [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI).
+Instale via `pip` ou siga as instruções na página acima (eu usei o `pip`):
+```
+pip install pyTelegramBotAPI
+```
+
+### Como utilizar
+Existe a classe `Reddit` que é um *scraper*, que pode ser utilizada independente da parte do código que interage com o *Telegram*.
+Para usar basta importar o pacote e instânciar a classe:
+```python
+from scraper.reddit import Reddit
+reddit_scraper = Reddit()
+```
+Utile o método `sub_reddits_for_telegram` que rebece um texto com subreddits separados por ponto-e-vírgula (`;`). Os dados serão retirados do site [Old Reddit](https://old.reddit.com/). O resultado é uma lista, onde cada elemento é um `dict` com esta estrutura:
+
+`
+[{'post': post_tile, 'markup': markup, 'line': post_title_line}', ...]
+`
+Onde:
+1. 'post': Quantidade de likes + o subreddit
+2. 'markup': É um markup para exibir botões no lugar da linha flat
+3. 'post_title_line': é um texto já preparado para o Telegram: `35.5k/news: Trump, Lifelong New Yorker, Declares Him... Comments`.
+
+Para um rápido teste basta executar:
+```
+python reddit.py
+```
+Será exibida todos os subreddits das categorias `askreddit`, `worldnews` e `cats` com até 500 likes.
+
+A parte do *Telegram* é um bot que responde a 2 comandos: `/NadaPraFazer` e `/NadaPraFazerB`, onde:
+- NadaPraFazer: retorna a lista de subreddits enviados como parâmetros e com mais de 5000 likes no formato de linhas com links
+- NadaPraFazerB: Faz a mesma coisa, mas exibe dois botões no lugar de links: Post e Comentários
+
+Antes de executar o Telegram Bot será necessário colocar o `TOKEN` no arquivo `config.py`:
+
+```python
+TOKEN = 'xxxxxxxxx:sssssssssssssssssssssssssssssssssss'
+```
+
+Para executar o bot, basta executar este comando:
+```
+python telegram_bot.py
+```
+
+
+### Considerações
+Eu nunca havia usado o telegram e decidi utilizar o `pyTelegramBotAPI` indicado na página do próprio Telegram: [core.telegram.org](https://core.telegram.org/bots/samples) na parte de `Python`.
+
+Ao analisar este pacote tenha em mente:
+* Assim como aconteceu com desafio/strings, eu tive apenas 3 noites, pois eu tinha 2 compromissos nesta semana
+* Foi bem legal trabalhar com o Telegram. Fiz uma versão com mensagens em modo texto e outra com botões
+
+Obrigado por este desafio
+
